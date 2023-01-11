@@ -1,4 +1,4 @@
-module test_tui
+module github.com/mizuirorivi/scp_tui
 
 go 1.19
 
