@@ -7,6 +7,7 @@ import (
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/mizuirorivi/scp_tui/internal/tui/view"
 	"github.com/shirou/gopsutil/v3/process"
 )
 
@@ -236,5 +237,6 @@ func ViewSelectedSSHProcess(m model) (string, model) {
 }
 
 func main() {
+	fmt.Println(view.Return_string())
 	manage_process.Run()
 }

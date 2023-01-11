@@ -3,7 +3,9 @@ module github.com/mizuirorivi/scp_tui
 go 1.19
 
 require (
+	github.com/charmbracelet/bubbles v0.14.0
 	github.com/charmbracelet/bubbletea v0.23.1
+	github.com/charmbracelet/lipgloss v0.6.0
 	github.com/shirou/gopsutil/v3 v3.22.12
 )
 
