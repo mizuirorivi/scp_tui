@@ -53,3 +53,39 @@ var (
 	spinnerStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("69"))
 	helpStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("241"))
 )
+
+func init() {
+	const (
+		DefaultTime              = time.Minute
+		TimerView   sessionState = iota
+		SpinnerView
+	)
+
+	var (
+		// Available spinners
+		Spinners = []spinner.Spinner{
+			spinner.Line,
+			spinner.Dot,
+			spinner.MiniDot,
+			spinner.Jump,
+			spinner.Pulse,
+			spinner.Points,
+			spinner.Globe,
+			spinner.Moon,
+			spinner.Monkey,
+		}
+		ModelStyle = lipgloss.NewStyle().
+				Width(15).
+				Height(5).
+				Align(lipgloss.Center, lipgloss.Center).
+				BorderStyle(lipgloss.HiddenBorder())
+		FocusedModelStyle = lipgloss.NewStyle().
+					Width(15).
+					Height(5).
+					Align(lipgloss.Center, lipgloss.Center).
+					BorderStyle(lipgloss.NormalBorder()).
+					BorderForeground(lipgloss.Color("69"))
+		SpinnerStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("69"))
+		HelpStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("241"))
+	)
+}

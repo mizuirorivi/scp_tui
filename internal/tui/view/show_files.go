@@ -2,14 +2,15 @@ package view
 
 import (
 	"fmt"
-	"github.com/mizuirorivi/scp_tui/internal/tui/view/show_files"
+
 	"github.com/charmbracelet/bubbles/spinner"
 	"github.com/charmbracelet/bubbles/timer"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
+	"github.com/mizuirorivi/scp_tui/internal/tui"
 )
 
-func (m show_files.mainModel) Init() tea.Cmd { // start the timer and spinner on program start return tea.Batch(m.timer.Init(), m.spinner.Tick)
+func (m tui.MainModel) Init() tea.Cmd { // start the timer and spinner on program start return tea.Batch(m.timer.Init(), m.spinner.Tick)
 
 	return tea.Batch(m.timer.Init(), m.spinner.Tick)
 }
