@@ -1,7 +1,8 @@
 package model
 
 import (
-	"github.com/mizuirorivi/scp_tui/internal/cmd"
+	"github.com/mizuirorivi/scp_tui/cmd"
+	"github.com/mizuirorivi/scp_tui/util"
 )
 
 type Model struct {
@@ -25,7 +26,7 @@ func init() {
 }
 
 func initialModel() Model {
-	choise := cmd.get_process()
+	choise := util.Get_process()
 	is_no_ssh := false
 	if len(choise) == 0 {
 		choise = []string{"no ssh process"}
@@ -42,7 +43,6 @@ func initialModel() Model {
 }
 func initialActionModel() Model {
 	cmd.Tr.will_quite = false
-	return Model{
 		Choices: []string{"remote_to_local", "local_to_remote", "show_files"},
 
 		// A map which indicates which choices are selected. We're using

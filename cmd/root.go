@@ -3,37 +3,17 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"strings"
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
+	mp "github.com/mizuirorivi/mizuirorivi/scp_tui/internal/tui/manage_process"
 	tm "github.com/mizuirorivi/mizuirorivi/scp_tui/internal/tui/model"
-	"github.com/mizuirorivi/scp_tui/internal/tui/manage_process"
-
-	"github.com/shirou/gopsutil/v3/process"
 )
 
 type tickMsg time.Time
 
 type tearoot struct {
-	will_quite bool
-}
-
-func get_process() []string {
-	var ssh_process_list []string
-	processes, err := process.Processes()
-	if err != nil {
-		fmt.Errorf("Error: %v", err)
-		os.Exit(1)
-	}
-
-	for _, process := range processes {
-		nme, _ := process.Cmdline()
-		if strings.Contains(nme, "ssh") && strings.Contains(nme, "@") {
-			ssh_process_list = append(ssh_process_list, nme)
-		}
-	}
-	return ssh_process_list
+	Will_quite bool
 }
 
 func (m tm.Model) Init() tea.Cmd {
@@ -69,12 +49,12 @@ func (m tm.Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			if m.is_no_ssh {
 				break
 			}
-			manage_process.Manage_process = *(manage_process.Manage_process.Move_next_node())
-			manage_process.Manage_process.Run()
+			mp.Manage_process = *(mp.Manage_process.Move_next_node())
+			mp.Manage_process.Run()
 		}
 	}
 
-	if Tr.will_quite {
+	if Tr.Will_quite {
 		fmt.Println("is will quite")
 		return m, tea.Quit
 	}
