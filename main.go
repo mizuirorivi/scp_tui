@@ -1,10 +1,9 @@
 package main
 
 import (
-	"github.com/mizuirorivi/scp_tui/cmd"
+	mp "github.com/mizuirorivi/scp_tui/internal/tui/manage_process"
 )
 
 func main() {
-
-	cmd.Manage_process.Run()
+	mp.Manage_process.Run()
 }
