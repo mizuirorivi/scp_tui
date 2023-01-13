@@ -7,10 +7,9 @@ import (
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/mizuirorivi/mizuirorivi/scp_tui/internal/tui/model"
+	tm "github.com/mizuirorivi/mizuirorivi/scp_tui/internal/tui/model"
 	"github.com/mizuirorivi/scp_tui/internal/tui/manage_process"
 
-	"github.com/mizuirorivi/mizuirorivi/scp_tui/internal/tui/manage_process"
 	"github.com/shirou/gopsutil/v3/process"
 )
 
@@ -37,7 +36,7 @@ func get_process() []string {
 	return ssh_process_list
 }
 
-func (m model.Model) Init() tea.Cmd {
+func (m tm.Model) Init() tea.Cmd {
 	return tea.Batch(tick(), tea.EnterAltScreen)
 }
 func tick() tea.Cmd {
@@ -45,7 +44,7 @@ func tick() tea.Cmd {
 		return tickMsg(t)
 	})
 }
-func (m model.Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (m tm.Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch msg.String() {
